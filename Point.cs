@@ -13,6 +13,8 @@ namespace Projektarbete
             this.x = x;
             this.y = y;
             this.pointScore = pointScore;
+            //Hej hej
+            
         }
     }
 }
