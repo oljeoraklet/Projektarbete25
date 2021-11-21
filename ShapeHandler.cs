@@ -12,7 +12,7 @@ namespace Projektarbete
             // Point targetPoint = new Point (1, 1, 4);
             // Console.WriteLine("IsPointInside returns " + square.IsPointInside(targetPoint));
             // System.Console.WriteLine(square.GetStats());
-            square.TestVertices();
+            square.GetStats();
         }
     }
 }

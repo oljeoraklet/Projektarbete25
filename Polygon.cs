@@ -11,6 +11,7 @@ namespace Projektarbete
         int centreY; // Centre coordinate in the y-axis from where the polygon is drawn
         double angle; 
         //bool isPointInside = false;
+        double area;
         Vertex[] vertices; //Coordinates for vertices in the x-axis
     
 
@@ -22,6 +23,8 @@ namespace Projektarbete
             this.centreX = centreX;
             this.centreY = centreY;
             vertices = new Vertex[numPoints];
+            angle = (2 *  Math.PI) / numPoints;
+            area = CalculateArea();
         }
         // Returns true if point is inside of the polygon. 
         public bool IsPointInside(Point targetPoint) {
@@ -72,6 +75,37 @@ namespace Projektarbete
 
                 vertices[i] = new Vertex(x, y);
             }
+        }
+
+        public void GetStats()
+        {
+            System.Console.WriteLine("Area = " + area);
+            System.Console.WriteLine("Angle = " + (Math.Round(angle  * 180 / Math.PI)));
+            System.Console.WriteLine("Number of points = " + numPoints);
+        }
+
+        private double CalculateArea()
+        {
+            double area = 0;
+
+            // Use law of Cosines to calculate the side length of one triangle in the polygon
+            // c² = a² + b² - 2ab cos C
+
+            double cSquared = Math.Pow(radius, 2) + Math.Pow(radius, 2) - 2 * radius * radius * Math.Cos(angle);
+
+            double xSide = Math.Sqrt(cSquared);
+
+            double s = (radius + radius + xSide) / 2;
+
+            // s = semiparameter of the triangle, aka half the parameter of the triangle
+
+            // Using Heron's formula to calculate the area
+            // T = √s(s−a)(s−b)(s−c)
+
+            area = Math.Sqrt(s * (s-radius) * (s-radius) * (s-xSide));
+  
+
+            return Math.Round(area, 3);
         }
 
         public void TestVertices()
