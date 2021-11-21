@@ -57,8 +57,6 @@ namespace Projektarbete
 
             System.Console.WriteLine(angleSum);
 
-            // Hej Hej
-
 
 
 
