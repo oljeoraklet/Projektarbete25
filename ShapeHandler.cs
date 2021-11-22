@@ -11,7 +11,8 @@ namespace Projektarbete
 
             // Hej Olle
             // Hur mår du idag?
-            Polygon square = new Polygon (5, 10, 2, 2);
+            // Jag mår bra
+            Polygon square = new Polygon(5, 10, 2, 2);
             // Point targetPoint = new Point (1, 1, 4);
             // Console.WriteLine("IsPointInside returns " + square.IsPointInside(targetPoint));
             // System.Console.WriteLine(square.GetStats());
