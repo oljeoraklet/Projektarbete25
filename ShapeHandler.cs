@@ -8,7 +8,9 @@ namespace Projektarbete
     {
         public void MakeShapes()
         {
-            Polygon square = new Polygon (3, 2, 2, 2);
+
+            // Hej Olle
+            Polygon square = new Polygon (5, 10, 2, 2);
             // Point targetPoint = new Point (1, 1, 4);
             // Console.WriteLine("IsPointInside returns " + square.IsPointInside(targetPoint));
             // System.Console.WriteLine(square.GetStats());
