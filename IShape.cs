@@ -1,7 +1,9 @@
 namespace Projektarbete
 {
-    public interface IShapes
+    public interface IShape
     {
         bool IsPointInside(Point targetPoint);
+        double CalculateArea();
+        string GetName();
     }
 }
