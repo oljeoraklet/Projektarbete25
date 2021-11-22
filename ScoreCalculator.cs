@@ -24,17 +24,16 @@ namespace Projektarbete
             double score = 0;
             foreach(IShape shape in Shapes)
             {
+                
                 foreach (Point point in Points)
                 {
                     if(shape.IsPointInside(point))
                     {
                         score += (shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()] * point.pointScore);
-                        System.Console.WriteLine($"Runda: {round} \n Score = {score} \n Area =  + {shape.CalculateArea()} \n PointScore =  {point.pointScore} \n Shape = {ShapeScoreDictionary[shape.GetName()]}\n");
                     }
                     else
                     {
                         score += (shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()]) / 4;
-                        System.Console.WriteLine($"Runda: {round} \n Score = {score} \n Area =  + {shape.CalculateArea()} \n Shape = {ShapeScoreDictionary[shape.GetName()]}\n");
                     }
                     round++;
                 }

@@ -24,8 +24,11 @@ namespace Projektarbete
             this.shapeName = shapeName;
             this.numPoints = numPoints;
 
-
+            // Make of vertices for the polygon
             vertices = new Vertex[numPoints];
+            GetVertices();
+
+            // Calculate numbers needed for the calculations below
             angle = (2 *  Math.PI) / numPoints;
             sideLength = perimeter / numPoints;
             radius = sideLength / (2 * Math.Sin(Math.PI / numPoints));
@@ -107,33 +110,6 @@ namespace Projektarbete
             area = (numPoints * sideLength * a) / 2;
 
             return area;
-        }
-
-        public void TestVertices()
-        {
-            for (int i = 0; i < numPoints; i++)
-            {
-                    // Calculating the starting angle of the circumcircle of the polygon
-                    // If the number of points are even the starting needs to be 
-                    // (π / number of sides) radians in order for the shape to have a flat side on the bottom
-                    if(numPoints % 2 == 0)
-                    {
-                        angle = Math.PI / numPoints + 2 * Math.PI * i / numPoints;
-                    }
-                    else
-                    {
-                        angle = 2 * Math.PI * i / numPoints;
-                        System.Console.WriteLine("Angle = " + angle * 180 / Math.PI);
-                    }
-
-                double x = Math.Round(centreX + radius * Math.Sin(angle), 2);
-                double y = Math.Round(centreY + radius * Math.Cos(angle), 2);
-
-                vertices[i] = new Vertex(x, y);
-
-                System.Console.WriteLine($"X{i} = {x}");
-                System.Console.WriteLine($"Y{i} = {y}");
-            }
         }
 
         private double CalculateAngleC(Vertex A, Vertex B, Point C)
