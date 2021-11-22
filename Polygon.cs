@@ -91,9 +91,13 @@ namespace Projektarbete
             // Use law of Cosines to calculate the side length of one triangle in the polygon
             // c² = a² + b² - 2ab cos C
 
-            double cSquared = Math.Pow(radius, 2) + Math.Pow(radius, 2) - 2 * radius * radius * Math.Cos(angle);
+            double radiusUpTwo = Math.Pow(radius, 2);
+
+            double cSquared = radiusUpTwo + radiusUpTwo - 2 * radius * radius * Math.Cos(angle);
 
             double xSide = Math.Sqrt(cSquared);
+
+            System.Console.WriteLine("Xside = " + xSide);
 
             double s = (radius + radius + xSide) / 2;
 
@@ -105,7 +109,7 @@ namespace Projektarbete
             area = Math.Sqrt(s * (s-radius) * (s-radius) * (s-xSide));
   
 
-            return Math.Round(area, 3);
+            return Math.Round(area * numPoints, 3);
         }
 
         public void TestVertices()
