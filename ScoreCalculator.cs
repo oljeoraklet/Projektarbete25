@@ -20,7 +20,7 @@ namespace Projektarbete
 
         public double CalculateScore()
         {
-            int round = 1;
+
             double score = 0;
             foreach(IShape shape in Shapes)
             {
@@ -29,21 +29,31 @@ namespace Projektarbete
                 {
                     if(shape.IsPointInside(point))
                     {
+                        // Console.WriteLine(shape.GetName() + " is worth "  + ShapeScoreDictionary[shape.GetName()]);
+                        // Console.WriteLine("The point " + point.x + ", " + point.y + " is worth: " + point.pointScore);
+                        // Console.WriteLine("The area of the shape is: " + shape.CalculateArea() + "\n");
+                        // System.Console.WriteLine("Result of calculations are = " + shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()] * point.pointScore + "\n");
                         score += (shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()] * point.pointScore);
                     }
                     else
                     {
-                        score += (shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()]) / 4;
+                        //System.Console.WriteLine(ShapeScoreDictionary[shape.GetName()]);
+                        // Console.WriteLine(shape.GetName() + " is worth "  + ShapeScoreDictionary[shape.GetName()]);
+                        // Console.WriteLine("The point is outside and is not worth a buck");
+                        // Console.WriteLine("The area of the shape is: " + shape.CalculateArea() + "\n");
+                        // System.Console.WriteLine("Result of calculations are = " + shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()] / 4  +  "\n");
+                        score += (shape.CalculateArea() * ShapeScoreDictionary[shape.GetName()] / 4);
                     }
-                    round++;
                 }
             }
+            Console.WriteLine("The result before conversion is: " + score);
             int result = Convert.ToInt32(Math.Round(score, 0, MidpointRounding.AwayFromZero));
+            Console.WriteLine("The result after conversion is: " + result + "\n");
             return result;
         }
     }
 }
 
 // Upprepa följande för alla kombinationer av en form och en punkt och summera resultaten. 
-// Om punkten träffar formen: multiplicera formens area, ShapeScore och punktens PointScore.  
+// Om punkten träffar formen: multiplicera formens area,     och punktens PointScore.  
 // Om punkten missar formen: multiplicera formens area med ShapeScore och dela sedan på fyra.

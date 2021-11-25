@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/Projektarbete25.csproj",
+      "projectUniqueName": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/Projektarbete25/Projektarbete25.csproj",
       "projectName": "Projektarbete25",
-      "projectPath": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/Projektarbete25.csproj",
+      "projectPath": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/Projektarbete25/Projektarbete25.csproj",
       "packagesPath": "/Users/_oraklet/.nuget/packages/",
-      "outputPath": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/obj/",
+      "outputPath": "/Users/_oraklet/Documents/Skola/OOP1/Projektarbete25/Projektarbete25/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/_oraklet/.nuget/NuGet/NuGet.Config"
