@@ -4,18 +4,16 @@ namespace Projektarbete
 {
     public class Polygon : IShape
     {
-        int centreX; // Centre coordinate in the x-axis from where the polygon is drawn
-        int centreY; // Centre coordinate in the y-axis from where the polygon is drawn
-        double perimeter; // Radius of the polygon
+        int centreX; 
+        int centreY; 
+        double perimeter; 
         string shapeName;
         int numPoints;
         double angle; 
         double sideLength;
         double radius;
-        Vertex[] vertices; //Coordinates for vertices in the x-axis
+        Vertex[] vertices;
     
-
-        // Constructor which creates a polygon given a number of points, a radius and a centre X and Y position.
         public Polygon(int centreX, int centreY, int perimeter, string shapeName, int numPoints)
         {
             this.centreX = centreX;
@@ -24,14 +22,14 @@ namespace Projektarbete
             this.shapeName = shapeName;
             this.numPoints = numPoints;
 
-            // Calculate numbers needed for the calculations below
+            // Logic to calculate remainding core variables
             angle = (2 *  Math.PI) / numPoints;
             sideLength = perimeter / Convert.ToDouble(numPoints);
             radius = sideLength / (2 * Math.Sin(Math.PI / numPoints));
 
-            // Make of vertices for the polygon
+            // Create vertices for the polygon
             vertices = new Vertex[numPoints];
-            GetVertices();
+            CreateVertices();
         }
         // Returns true if point is inside of the polygon. 
         public bool IsPointInside(Point targetPoint) {
@@ -60,9 +58,7 @@ namespace Projektarbete
         }
 
         public string GetName(){return shapeName;}
-
-        // Calculates the vertices of a polygon and places x and y coordinates in their respective arrays.
-        private void GetVertices()
+        private void CreateVertices()
         {         
             for (int i = 0; i < numPoints; i++)
             {
@@ -78,34 +74,13 @@ namespace Projektarbete
                     // For odd number-sided shapes the starting axis is just 0 radians
                     angle = 2 * Math.PI * i / numPoints;            
                 }
-
                 
                 double x = Math.Round(centreX + radius * Math.Sin(angle), 2);
                 double y = Math.Round(centreY + radius * Math.Cos(angle), 2);
 
-                // if(numPoints > 6)
-                // {
-                    
-                //     System.Console.WriteLine($"Centre X{i} of {shapeName} = {centreX}");
-                //     System.Console.WriteLine($"Centre Y{i} of {shapeName} = {centreY} \n");
-                //     System.Console.WriteLine($"X{i} of {shapeName} = {x}");
-                //     System.Console.WriteLine($"Y{i} of {shapeName} = {y} \n");
-                // }
-
                 vertices[i] = new Vertex(x, y);
             }
         }
-
-        public void GetStats()
-        {
-            System.Console.WriteLine("Area = " + CalculateArea());
-            System.Console.WriteLine("Angle = " + (Math.Round(angle  * 180 / Math.PI)));
-            System.Console.WriteLine("Number of points = " + numPoints);
-            System.Console.WriteLine("Shapename = " + shapeName);
-            System.Console.WriteLine("Sidelength = " + sideLength);
-            System.Console.WriteLine("Radius = " + radius);
-        }
-
         public double CalculateArea()
         {
             // Calculate apothem based on sidelength and number of sides
@@ -139,8 +114,6 @@ namespace Projektarbete
             // c² = a² + b² - 2ab cos C
             
             double cosC = ((a + b - c) / (2 * aSquared * bSquared));
-
-            // System.Console.WriteLine($"Angle C in {shapeName} before conversion is {((Math.Acos(cosC) * 180) / Math.PI)}");
 
             // Convert from radians to degrees for simplicity
             double angleC = ((Math.Acos(cosC) * 180) / Math.PI);

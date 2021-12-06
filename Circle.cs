@@ -9,7 +9,6 @@ namespace Projektarbete
         double radius;
         string shapeName;
         
-        
         public Circle(int centreX, int centreY, int perimeter, string shapeName)
         {
             this.centreX = centreX;
